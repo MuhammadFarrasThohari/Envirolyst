@@ -1,9 +1,6 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@import "tailwindcss";
+
+
 
 .logo {
   height: 6em;
@@ -39,4 +36,25 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* asli */
+.App {
+  position: relative;
+}
+
+.controls {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+
+
+.cursor-box {
+  position: fixed;
+  border: 4px dashed pink;
+  pointer-events: none;
+  z-index: 999;
 }
