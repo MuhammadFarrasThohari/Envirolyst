@@ -1,0 +1,17 @@
+{
+  "name": "land-usage-backend",
+  "version": "1.0.0",
+  "description": "Backend API for satellite image land usage classification",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python app.py"
+  },
+  "dependencies": {
+    "flask": "^2.3.3",
+    "flask-cors": "^4.0.0",
+    "pillow": "^10.0.0",
+    "numpy": "^1.24.3",
+    "matplotlib": "^3.7.2"
+  }
+}
