@@ -4,34 +4,23 @@
   --color-allWhite: #eaeaea;
   --color-allBlack: #353535;
   --color-allGray: #787878;
-  
-  --color-greenie:#4caf50;
+
+  --color-greenie: #4caf50;
   --color-lightGreen: #b0ffb0;
 
-  --font-popLight: Poppins-Light, sans-serif ;
-  --font-popReg: Poppins-Regular, sans-serif ;
-  --font-popSmBld: Poppins-SemiBold, sans-serif ;
-  --font-popMd: Poppins-Medium, sans-serif ;
-  --font-popBold: Poppins-Bold, sans-serif ;
-  
+  --font-popLight: Poppins-Light, sans-serif;
+  --font-popReg: Poppins-Regular, sans-serif;
+  --font-popSmBld: Poppins-SemiBold, sans-serif;
+  --font-popMd: Poppins-Medium, sans-serif;
+  --font-popBold: Poppins-Bold, sans-serif;
+
 
 }
 
 #root {
   /* max-width: 1280px; */
-  @apply bg-allWhite p-4
-   
-  
+  @apply bg-white p-4
 }
-
-P {
-  @apply text-allBlack font-popMd;
-}
-
-span{
-  @apply  text-allGray font-popReg;
-}
-
 
 
 @font-face {
