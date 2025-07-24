@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Map } from "@vis.gl/react-google-maps";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { getRecommendation } from "../services/getRecommendation";
 
 const Mapv4 = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -61,13 +62,25 @@ const Mapv4 = () => {
     }
   };
 
+  async function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
   const handleButton = async () => {
     let blob;
     let weatherData;
     let airPollutionData;
     let landData = [];
+    let imageBase64 = null;
+
     try {
       blob = await downloadImageAsBlob(snapshotUrl);
+      imageBase64 = await blobToBase64(blob);
     } catch (error) {
       console.error("Error downloading image:", error);
       return; // keluar jika download gagal
@@ -78,7 +91,7 @@ const Mapv4 = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/classify",
+        "http://localhost:5050/api/classify",
         formData,
         {
           headers: {
@@ -94,10 +107,8 @@ const Mapv4 = () => {
 
     try {
       const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${
-          lastCoords.lat
-        }&lon=${lastCoords.lng}&appid=${
-          import.meta.env.VITE_WEATHER_API_KEY
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lastCoords.lat
+        }&lon=${lastCoords.lng}&appid=${import.meta.env.VITE_WEATHER_API_KEY
         }&units=metric`
       );
       console.log("Weather data:", data);
@@ -108,8 +119,7 @@ const Mapv4 = () => {
 
     try {
       const { data } = await axios.get(
-        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${
-          lastCoords.lat
+        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lastCoords.lat
         }&lon=${lastCoords.lng}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
       );
       console.log("Air pollution data:", data);
@@ -122,8 +132,10 @@ const Mapv4 = () => {
       coordinates: [lastCoords.lat, lastCoords.lng],
       city: city,
       country: country,
+      area: `${estimateAreaFromBox(zoomLevel, boxSize, scale, lastCoords.lat)} m`,
+      sat_image: imageBase64,
       weather: {
-        temprature: weatherData.main.temp,
+        temperature: weatherData.main.temp,
         humidity: weatherData.main.humidity,
         wind_speed: weatherData.wind.speed,
       },
@@ -133,7 +145,7 @@ const Mapv4 = () => {
         co: airPollutionData.list[0].components.co,
         aqi: airPollutionData.list[0].main.aqi,
       },
-      land_coverage:{
+      land_coverage: {
         top1: {
           label: landData[0]?.label || "Unknown",
           score: landData[0]?.score || 0,
@@ -157,7 +169,11 @@ const Mapv4 = () => {
       }
     };
 
-    console.log("Input data to be sent:", inputData);
+    const recommendations = await getRecommendation(inputData)
+
+    // console.log("Input data to be sent:", inputData);
+    // console.log("Recommendations result with AI:", recommendations);
+    navigate('/result', { state: { inputData, recommendations } })
   };
 
   return (
