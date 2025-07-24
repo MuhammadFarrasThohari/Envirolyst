@@ -2,8 +2,6 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from PIL import Image
 from transformers import pipeline
-import numpy as np
-import matplotlib.pyplot as plt
 import base64
 import io
 import json
