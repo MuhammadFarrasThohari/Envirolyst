@@ -12,28 +12,27 @@ export const getRecommendation = async (data) => {
     - City: ${data.city}
     - Country: ${data.country}
     - Coordinates: [${data.coordinates[0]}, ${data.coordinates[1]}]
-    - Land Coverage:
-      - Vegetation: ${data.land_coverage.vegetation}% (indicating green spaces like parks, forests)
-      - Buildings: ${data.land_coverage.buildings}% 
-      - Roads: ${data.land_coverage.roads}% 
-      - Empty Land: ${data.land_coverage.empty_land}% (indicating unused land)
-      - Water Areas: ${data.land_coverage.water_areas}%
+    - Land Usage Classification (top 5 categories with confidence scores):
+      1. ${data.land_coverage.top1.label}: ${(data.land_coverage.top1.score * 100).toFixed(1)}%
+      2. ${data.land_coverage.top2.label}: ${(data.land_coverage.top2.score * 100).toFixed(1)}%
+      3. ${data.land_coverage.top3.label}: ${(data.land_coverage.top3.score * 100).toFixed(1)}%
+      4. ${data.land_coverage.top4.label}: ${(data.land_coverage.top4.score * 100).toFixed(1)}%
+      5. ${data.land_coverage.top5.label}: ${(data.land_coverage.top5.score * 100).toFixed(1)}%
     - Weather:
-      - Temperature: ${data.weather.temperature}°C
+      - Temperature: ${data.weather.temprature}°C
       - Humidity: ${data.weather.humidity}%
       - Wind Speed: ${data.weather.wind_speed} m/s
-      - UV Index: ${data.weather.uv_index}
-      - Season: ${data.weather.season}
     - Air Quality:
       - Air Quality Index (AQI): ${data.air_quality.aqi} (scale: 0-50 good, 51-100 moderate, 101-150 unhealthy for sensitive groups, 151+ unhealthy)
-      - PM2.5: ${data.air_quality.pm25} 
-      - CO: ${data.air_quality.co} 
+      - PM2.5: ${data.air_quality.pm25} μg/m³
+      - PM10: ${data.air_quality.pm10} μg/m³
+      - CO: ${data.air_quality.co} μg/m³
 
     Task:
     1. Analyze the data to assess the environmental health of the area.
     2. Provide 2-4 specific recommendations for each stakeholder (residents, government, community organizations).
     3. For each recommendation, include:
-       - "icon": A Font Awesome class (e.g., fa-regular fa-tree, fa-solid fa-leaf) representing the action.
+       - "icon": A Lucide React icon name (e.g., TreePine, Leaf, Recycle, Bus, Home, Building2, Users, Sprout, Wind, Droplets, Sun, Shield, Heart, Car, Bike, etc.) representing the action.
        - "title": A short title summarizing the recommendation (1-5 words).
        - "description": A 1-2 sentence description providing detailed guidance on implementing the recommendation, explaining why it's suitable given the data, and detailing the environmental benefits.
        - "priority": A number (high, medium, low) indicating the urgency or importance of the recommendation.
@@ -41,30 +40,27 @@ export const getRecommendation = async (data) => {
     {
       "residents": [
         {
-          "icon": "fa-regular fa-tree",
+          "icon": "TreePine",
           "title": "Plant Native Trees",
-          "description": "Plant native oak and maple trees in the empty land areas with good sunlight for optimal growth, as the low 18% vegetation and high AQI of 152 indicate a need for green spaces to improve air quality. This will enhance biodiversity and reduce urban heat, benefiting public health.",
+          "description": "Plant native tropical trees in available residential spaces to increase green coverage, as the area is 95.3% urban residential with good air quality (AQI: 1) that should be maintained. This will enhance biodiversity, provide natural cooling, and help maintain the current low pollution levels.",
           "priority": "High"
-        },
-        ...
+        }
       ],
       "government": [
         {
-          "icon": "fa-solid fa-city",
-          "title": "Develop Green Spaces",
-          "description": "Implement urban parks in the 15% underutilized land with community input, as the 18% vegetation and high PM2.5 of 76 suggest a need to address pollution and heat. This will improve air quality and provide recreational benefits for residents.",
+          "icon": "Building2",
+          "title": "Green Urban Planning",
+          "description": "Implement mandatory green space requirements in new residential developments, leveraging the small irrigated land percentage (1.1%) as a model for sustainable urban expansion. This will prevent air quality degradation as urbanization continues and create climate-resilient neighborhoods.",
           "priority": "High"
-        },
-        ...
+        }
       ],
       "community_organizations": [
         {
-          "icon": "fa-solid fa-hands-holding",
-          "title": "Organize Clean-Ups",
-          "description": "Organize clean-up events in the 15% empty land during cooler months, as high PM2.5 levels and the tropical wet season necessitate community action for cleaner spaces. This will reduce pollution and foster community engagement in sustainability.",
+          "icon": "Users",
+          "title": "Community Gardens",
+          "description": "Establish community gardens in underutilized residential areas, taking advantage of the tropical climate and current excellent air quality to create sustainable food systems. This will strengthen community bonds while maintaining environmental health and reducing urban heat islands.",
           "priority": "Medium"
-        },
-        ...
+        }
       ]
     }
   `;
