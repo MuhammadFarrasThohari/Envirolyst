@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import logo from '../assets/react.svg'
+import React, { useState, useEffect } from 'react'
+import logo from '/logo/blackGreen.png'
 import satelliteIpsum from '../assets/image/satellite-dum.jpeg'
 import { MapPin, Building, TreePine, Square, Waves, Thermometer, Wind, Users, Droplets, Download, Factory, Home, Sprout, Trees, Wheat, Flower, Car, Mountain } from 'lucide-react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import RecommendationCard from '../components/RecommendationCard';
 import { useLocation } from 'react-router';
 import * as LucideIcons from "lucide-react";
-
-// public assets
-import logoKita from "/logo/blackGreen.png";
+import { useNavigate } from 'react-router';
 
 function AnalysisResults() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = "Envirolyst – Analysis Results";
   }, []);
@@ -508,12 +508,15 @@ function AnalysisResults() {
     <div className='flex flex-col w-full p-10 gap-12'>
       {/* Header */}
       <div className='flex w-full justify-between items-center'>
-        <img src={logo} alt="Logo Image" className='size-12' />
+        <a className="size-8 flex space-x-3 items-center text-allBlack mb-4 md:mb-0" href='/'>
+          <img src={logo} alt="Logo Image" className='size-9 object-center object-contain' />
+          <span className="font-popSmBld text-xl">Envirolyst</span>
+        </a>
         <div className='flex flex-col justify-center items-center gap-2'>
           <h1 className='text-4xl font-semibold'>Enviromental Analysis Dashboard</h1>
           <p className='text-sm text-gray-600'>Satellite imagery and API-powered insight for sustainable development</p>
         </div>
-        <button className='bg-green-500 px-4 py-4 rounded-xl text-sm text-white cursor-pointer '>Analyze different area</button>
+        <button onClick={() => navigate('/mapview')} className='bg-green-500 px-4 py-4 rounded-xl text-sm text-white cursor-pointer '>Analyze different area</button>
       </div>
 
       {/* Data */}
@@ -659,7 +662,7 @@ function AnalysisResults() {
         <button
           onClick={generateHTMLReport}
           disabled={isGeneratingReport}
-          className='flex gap-2 text-white bg-green-400 py-3 px-4 rounded-lg cursor-pointer items-center hover:bg-green-500 disabled:opacity-50 disabled:cursor-not-allowed'
+          className='flex gap-2 text-white bg-green-500 py-3 px-4 rounded-lg cursor-pointer items-center hover:bg-green-500 disabled:opacity-50 disabled:cursor-not-allowed'
         >
           <Download />
           {isGeneratingReport ? 'Generating Report...' : 'Download HTML Report'}
@@ -667,12 +670,12 @@ function AnalysisResults() {
         <button
           onClick={generatePDFReport}
           disabled={isGeneratingReport}
-          className='flex gap-2 text-white bg-blue-400 py-3 px-4 rounded-lg cursor-pointer items-center hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed'
+          className='flex gap-2 text-white bg-red-500 py-3 px-4 rounded-lg cursor-pointer items-center hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed'
         >
           <Download />
           {isGeneratingReport ? 'Generating PDF...' : 'Download PDF Report'}
         </button>
-        <button className='flex gap-2 text-green-400 border border-green-300 rounded-lg items-center py-3 px-4 cursor-pointer hover:bg-green-400 hover:text-white'>
+        <button onClick={() => navigate('/initiatives')} className='flex gap-2 text-green-400 border border-green-300 rounded-lg items-center py-3 px-4 cursor-pointer hover:bg-green-400 hover:text-white'>
           <Users />View Nearby Initiatives
         </button>
       </div>

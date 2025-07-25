@@ -3,7 +3,7 @@ import { Map } from 'lucide-react'
 import { useNavigate } from 'react-router'
 
 import logo from '/logo/blackGreen.png'
-import macmockup from '../assets/image/mac16-mockup.png'
+import macmockup from '../assets/image/Mapview-mockup-front.png'
 
 function LandingPage() {
   const navigate = useNavigate()
@@ -29,8 +29,8 @@ function LandingPage() {
             <a>Stories</a>
           </nav>
           <button onClick={handleExploreClick} className="primarybtn flex justify-center items-center  space-x-3 py-2 px-4  rounded font-popReg text-white ">
-            <span>  View map</span> 
-              
+            <span>  View map</span>
+
           </button>
         </div>
       </header>
@@ -38,33 +38,33 @@ function LandingPage() {
         <div className="container mx-auto flex px-5 py-32 items-center justify-center flex-col space-y-6">
           <div className="text-center sm:text-7xl text-3xl lg:w-2/3 w-full space-y-2">
             <h1 className=" font-popSmBld ">
-              Insightful 
+              Insightful
               <span className='font-popReg'> Views </span>
-              
+
             </h1>
             <h1 className=" font-popSmBld text-greenie ">
-              Purposeful  
+              Purposeful
               <span className='text-allBlack'> Steps </span>
-              
+
             </h1>
             <p className="font-popReg text-lg leading-relaxed mt-6">From sky-level vision to steps that turn insight into action</p>
           </div>
-            <div className=" font-popMd text-white">
-              <button onClick={handleExploreClick} className="primarybtn flex justify-center items-center  space-x-3 py-2 px-4  rounded text-lg">
+          <div className=" font-popMd text-white">
+            <button onClick={handleExploreClick} className="primarybtn flex justify-center items-center  space-x-3 py-2 px-4  rounded text-lg">
               <Map size={20} />
-              <span>  Start exploring</span> 
-                
-              </button>
-            </div>
-        <img src={macmockup} className='size-full'/>
+              <span>  Start exploring</span>
+
+            </button>
+          </div>
+          <img src={macmockup} className='size-full mix-blend-multiply' />
         </div>
 
       </section>
       <section className='mx-auto w-full  flex justify-center items-center'>
       </section>
-      
+
     </main>
-    
+
   )
 }
 
