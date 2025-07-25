@@ -4,15 +4,19 @@ import { Map, APIProvider } from '@vis.gl/react-google-maps'
 import './App.css'
 
 // pages
-import AnalysisResults from './pages/AnalysisResults'
 import LandingPage from './pages/LandingPage'
 import LocationSelector from './pages/LocationSelector'
+import AnalysisResults from './pages/AnalysisResults'
 import NearbyInitiatives from './pages/NearbyInitiatives'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <LandingPage />
+    },
+    {
+      path: "/mapview",
       element: <LocationSelector />
     },
     {

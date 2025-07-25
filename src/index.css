@@ -22,6 +22,14 @@
   @apply bg-white
 }
 
+.previewLabel p {
+  @apply font-popMd;
+}
+
+.previewLabel p span {
+  @apply font-popMd text-allGray;
+}
+
 
 @font-face {
   font-family: 'Poppins-Light';
