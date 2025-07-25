@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import logo from '../assets/react.svg'
 import satelliteIpsum from '../assets/image/satellite-dum.jpeg'
 import { MapPin, Building, TreePine, Square, Waves, Thermometer, Wind, Users, Droplets, Download, Factory, Home, Sprout, Trees, Wheat, Flower, Car, Mountain } from 'lucide-react';
@@ -7,7 +7,13 @@ import RecommendationCard from '../components/RecommendationCard';
 import { useLocation } from 'react-router';
 import * as LucideIcons from "lucide-react";
 
+// public assets
+import logoKita from "/logo/blackGreen.png";
+
 function AnalysisResults() {
+  useEffect(() => {
+    document.title = "Envirolyst – Analysis Results";
+  }, []);
   const location = useLocation();
 
   const { inputData, recommendations } = location.state || {};
