@@ -1,7 +1,7 @@
 # 🌱 Envirolyst
 
 <div align="center">
-  <img src="./public/logo/blackGreen.png" alt="Envirolyst Logo" width="120" height="120">
+  <img src="./public/logo/Envirollyst_logo.png" alt="Envirolyst Logo" width="120" height="120">
   
   **AI-Powered Environmental Analysis for Sustainable Decision Making**
   
@@ -152,10 +152,10 @@ graph TD
 ## 💻 Mockups
 
 <div align="center">
-  <img src="./public/mockups/3" alt="Map Interface" width="45%">
-  <img src="./public/mockups/4" alt="Data Result" width="45%">
-  <img src="./public/mockups/5" alt="AI Recomendation" width="45%">
-  <img src="./public/mockups/6" alt="Events" width="45%">
+  <img src="./public/mockups/3.png" alt="Map Interface" width="45%">
+  <img src="./public/mockups/4.png" alt="Data Result" width="45%">
+  <img src="./public/mockups/5.png" alt="AI Recomendation" width="45%">
+  <img src="./public/mockups/6.png" alt="Events" width="45%">
 </div>
 
 ---
