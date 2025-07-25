@@ -257,7 +257,7 @@ const Mapv4 = () => {
 
           <img src={snapshotUrl} alt="Snapshot" className="w-full rounded-lg" />
           <button
-            className="bg-greenie text-allWhite px-4 py-2 rounded mt-2 font-popReg w-full"
+            className="primarybtn cursor-pointer transit text-allWhite px-4 py-2 rounded mt-2 font-popReg w-full"
             onClick={handleButton}
           >
             Analyze

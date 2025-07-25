@@ -61,3 +61,12 @@
   pointer-events: none;
   z-index: 999;
 }
+
+.transit {
+  @apply transition-colors;
+}
+
+button:hover {
+  @apply cursor-pointer 
+}
+

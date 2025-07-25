@@ -7,6 +7,7 @@ import './App.css'
 import AnalysisResults from './pages/AnalysisResults'
 import LandingPage from './pages/LandingPage'
 import LocationSelector from './pages/LocationSelector'
+import NearbyInitiatives from './pages/NearbyInitiatives'
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,10 @@ function App() {
     {
       path: "/result",
       element: <AnalysisResults />
+    },
+    {
+      path: "/initiatives",
+      element: <NearbyInitiatives />
     },
   ])
 

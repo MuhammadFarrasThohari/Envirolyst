@@ -19,7 +19,7 @@
 
 #root {
   /* max-width: 1280px; */
-  @apply bg-white p-4
+  @apply bg-white
 }
 
 
@@ -62,4 +62,10 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+}
+
+.primarybtn {
+  @apply bg-greenie hover:bg-green-800 
+  active:bg-lime-600 active:duration-0
+
 }
