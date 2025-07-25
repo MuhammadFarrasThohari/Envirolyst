@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { getRecommendation } from "../services/getRecommendation";
 
-const Mapv4 = () => {
+const MapView = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [snapCount, setSnapCount] = useState(0);
   const [zoomLevel, setZoomLevel] = useState(18);
@@ -178,7 +178,7 @@ const Mapv4 = () => {
 
   return (
     <div className="relative">
-      <header className="bg-allWhite pb-6 pt-2 flex  items-center justify-between text-center text-2xl font-popMd">
+      <header className="bg-white p-6 flex  items-center justify-between text-center text-2xl font-popMd">
         <h2>Logo</h2>
         <div className="flex flex-col items-center justify-center space-y-1">
           <h3 className="font-popSmBld">Snapshot</h3>
@@ -229,13 +229,13 @@ const Mapv4 = () => {
           className="fixed bg-allWhite p-4 rounded-md space-y-2"
           style={{
             bottom: 30,
-            right: 20,
+            right: 10,
             zIndex: 10000,
             maxWidth: "280px",
           }}
         >
           {/* <h4>📸 Snapshot #{snapCount}</h4> */}
-          <div className="text-sm text-allBlack space-y-1 ">
+          <div className="text-sm text-allBlack space-y-1 previewLabel" >
             <p>
               <span> Location: </span>
               {city}, {country}
@@ -257,7 +257,7 @@ const Mapv4 = () => {
 
           <img src={snapshotUrl} alt="Snapshot" className="w-full rounded-lg" />
           <button
-            className="bg-greenie text-allWhite px-4 py-2 rounded mt-2 font-popReg w-full"
+            className="primarybtn transit text-allWhite px-4 py-2 rounded mt-2 font-popReg w-full"
             onClick={handleButton}
           >
             Analyze
@@ -328,4 +328,4 @@ async function getCityAndCountry(lat, lng) {
   }
 }
 
-export default Mapv4;
+export default MapView;
