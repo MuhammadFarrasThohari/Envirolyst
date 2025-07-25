@@ -2,7 +2,7 @@ import React from 'react'
 import { Map } from 'lucide-react'
 import { useNavigate } from 'react-router'
 
-import logo from '../assets/react.svg'
+import logo from '/logo/blackGreen.png'
 import macmockup from '../assets/image/mac16-mockup.png'
 
 function LandingPage() {
@@ -17,9 +17,9 @@ function LandingPage() {
     <main className="landing-page  min-h-1/2 p-6 ">
       <header className="text-gray-600 body-font">
         <div className=" flex  flex-col md:flex-row items-center">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <img src={logo} alt="Logo Image" className='size-10' />
-            <span className="ml-3 text-xl">Logo</span>
+          <a className="flex space-x-3 items-center text-allBlack mb-4 md:mb-0" href='/'>
+            <img src={logo} alt="Logo Image" className='size-9 object-center object-contain' />
+            <span className="font-popSmBld text-xl">Envirolyst</span>
           </a>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap space-x-8 items-center text-lg font-popReg justify-center">
             <a>About</a>
@@ -56,7 +56,7 @@ function LandingPage() {
                 
               </button>
             </div>
-        <img src={macmockup} className='size-'/>
+        <img src={macmockup} className='size-full'/>
         </div>
 
       </section>

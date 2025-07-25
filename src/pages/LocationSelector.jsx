@@ -4,7 +4,13 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { getRecommendation } from "../services/getRecommendation";
 
+import logo from "/logo/blackGreen.png";
+
 const MapView = () => {
+   useEffect(() => {
+    document.title = "Envirolyst – Map view";
+  }, []);
+
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [snapCount, setSnapCount] = useState(0);
   const [zoomLevel, setZoomLevel] = useState(18);
@@ -206,12 +212,15 @@ const MapView = () => {
         </div>
       )}
       <header className="bg-white p-6 flex  items-center justify-between text-center text-2xl font-popMd">
-        <h2>Logo</h2>
-        <div className="flex flex-col items-center justify-center space-y-1">
-          <h3 className="font-popSmBld">Snapshot</h3>
-          <h1 className="text-sm">
+        <a className="flex space-x-3 items-center text-allBlack mb-4 md:mb-0 " href='/'>
+          <img src={logo} alt="Logo Image" className='size-9 object-center object-contain' />
+          <span className="font-popSmBld text-xl">Envirolyst</span>
+        </a>
+        <div className="flex flex-col items-center justify-center 0">
+          {/* <h3 className="font-popSmBld">Snapshot</h3> */}
+          <h2 className="text-base">
             Click an area on the map and analyze to see the report
-          </h1>
+          </h2>
         </div>
         <h2 className="text-lg">Zoom: {zoomLevel}</h2>
       </header>
@@ -219,7 +228,7 @@ const MapView = () => {
         defaultCenter={{ lat: -6.2, lng: 106.8 }}
         defaultZoom={zoomLevel}
         mapTypeId="hybrid"
-        style={{ width: "100%", height: "82vh" }}
+        style={{ width: "100%", height: "85vh" }}
         onClick={handleMapClick}
         onZoomChanged={(e) => setZoomLevel(e.detail.zoom)}
         onLoad={(mapInstance) => {

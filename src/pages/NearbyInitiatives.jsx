@@ -1,11 +1,15 @@
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Search, MapPin, Flag, CalendarDays, Users } from 'lucide-react';
 import dummyInitiatives from '../../data/initiatives';
+import logo from '/logo/blackGreen.png';
 
 const NearbyInitiatives = () => {
+  useEffect(() => {
+      document.title = "Envirolyst – Nearby Initiatives";
+    }, []);
 
-    const [priorityFilter, setPriorityFilter] = useState('All');
+  const [priorityFilter, setPriorityFilter] = useState('All');
   const [distanceFilter, setDistanceFilter] = useState(null);
 
   const parseDistance = (distanceStr) => {
@@ -69,8 +73,11 @@ const NearbyInitiatives = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <header className="flex items-center mb-8 ">
-        <div className="bg-red-500 w-6 h-6 rounded-full mr-2"></div>
-        <span className="text-lg font-semibold text-gray-800">Logoipsum</span>
+        <a className="flex space-x-3 items-center text-allBlack mb-4 md:mb-0 " href='/'>
+          <img src={logo} alt="Logo Image" className='size-9 object-center object-contain' />
+          <span className="font-popSmBld text-xl">Envirolyst</span>
+        </a>
+        
       </header>
 
       <main className=" mx-auto ">

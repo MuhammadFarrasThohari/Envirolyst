@@ -7,7 +7,13 @@ import RecommendationCard from '../components/RecommendationCard';
 import { useLocation } from 'react-router';
 import * as LucideIcons from "lucide-react";
 
+// public assets
+import logoKita from "/logo/blackGreen.png";
+
 function AnalysisResults() {
+  useEffect(() => {
+    document.title = "Envirolyst – Analysis Results";
+  }, []);
   const location = useLocation();
 
   const { inputData, recommendations } = location.state || {};
