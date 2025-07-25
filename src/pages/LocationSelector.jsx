@@ -13,6 +13,9 @@ const Mapv4 = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("Analyze.");
+
   const navigate = useNavigate();
   const mapRef = useRef(null);
   const boxSize = 200;
@@ -28,6 +31,20 @@ const Mapv4 = () => {
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const dots = [".", "..", "..."];
+    let i = 0;
+
+    const interval = setInterval(() => {
+      setLoadingText(`Analyze${dots[i % dots.length]}`);
+      i++;
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   const handleMapClick = async (e) => {
     const { latLng } = e.detail;
@@ -72,6 +89,8 @@ const Mapv4 = () => {
   }
 
   const handleButton = async () => {
+    setIsLoading(true);
+
     let blob;
     let weatherData;
     let airPollutionData;
@@ -173,11 +192,20 @@ const Mapv4 = () => {
 
     // console.log("Input data to be sent:", inputData);
     // console.log("Recommendations result with AI:", recommendations);
+    setIsLoading(false);
     navigate('/result', { state: { inputData, recommendations } })
   };
 
   return (
     <div className="relative">
+      {isLoading && (
+        <div className="fixed inset-0 bg-black/50 z-[10001] flex items-center justify-center">
+          <div className="text-white text-2xl font-popMd animate-pulse">
+            {loadingText}
+          </div>
+        </div>
+      )}
+
       <header className="bg-allWhite pb-6 pt-2 flex  items-center justify-between text-center text-2xl font-popMd">
         <h2>Logo</h2>
         <div className="flex flex-col items-center justify-center space-y-1">
@@ -257,7 +285,7 @@ const Mapv4 = () => {
 
           <img src={snapshotUrl} alt="Snapshot" className="w-full rounded-lg" />
           <button
-            className="bg-greenie text-allWhite px-4 py-2 rounded mt-2 font-popReg w-full"
+            className="bg-greenie text-allWhite px-4 py-2 rounded mt-2 font-popReg w-full cursor-pointer hover:bg-green-600"
             onClick={handleButton}
           >
             Analyze
